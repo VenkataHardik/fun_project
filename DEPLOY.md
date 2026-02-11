@@ -43,11 +43,19 @@ This creates the tables in your hosted DB. You only need to do it once per datab
 ## 4. Deploy on Vercel
 
 1. Go to **[vercel.com](https://vercel.com)** and sign in (GitHub).
-2. **Add New** → **Project** → import **VenkataHardik/fun_project** (or your repo).
-3. **Environment Variables** (before or after first deploy):
-   - `DATABASE_URL` = your Postgres connection string
-   - `JWT_SECRET` = a long random string (e.g. `openssl rand -base64 32`)
-   - Optional: `GROQ_API_KEY`, `FRIEND_DISPLAY_NAME`, `FRIEND_BIRTHDAY`, `DEDICATION_MESSAGE`, `ASK_RATE_LIMIT_PER_MINUTE`
+2. **Add New** → **Project** → import your repo.
+3. **Environment Variables** — set these in Vercel (Settings → Environment Variables) so the app and AI features work when deployed:
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `DATABASE_URL` | Yes | Postgres connection string from Neon, Vercel Postgres, or Supabase |
+| `JWT_SECRET` | Yes | Long random string (e.g. `openssl rand -base64 32`) for auth |
+| `GROQ_API_KEY` | No (AI) | Enables AI chat replies. Get a free key at [console.groq.com](https://console.groq.com). Without it, the app uses scripted replies only. |
+| `ASK_RATE_LIMIT_PER_MINUTE` | No | Max chat messages per user per minute (default 30). Set to `0` to disable. |
+| `FRIEND_DISPLAY_NAME` | No | Preloaded name in greeting when user has no profile (e.g. `Nanditha`) |
+| `FRIEND_BIRTHDAY` | No | Preloaded birthday for countdown when profile empty (e.g. `2004-08-20`) |
+| `DEDICATION_MESSAGE` | No | Short message below the greeting (e.g. `Made for you by Venkat`) |
+
 4. Click **Deploy**.
 
 Vercel will run `prisma generate` automatically. It will **not** run `prisma migrate deploy` or `prisma db push` by default.

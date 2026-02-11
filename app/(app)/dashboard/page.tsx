@@ -120,7 +120,15 @@ export default async function DashboardPage() {
         <div className="mb-4 p-3 rounded-xl bg-ice-50 border border-ice-200">
           <p className="text-xs font-medium text-ice-600 mb-0.5">Message from your penguin</p>
           <p className="text-sm text-gray-700">&ldquo;{dailyMessageToShow}&rdquo;</p>
+          <p className="text-xs text-gray-500 mt-2">
+            Chat with your penguin below — type a question and click Ask; the reply appears in the speech bubble above the penguin.
+          </p>
         </div>
+      )}
+      {!dailyMessageToShow && (
+        <p className="text-xs text-gray-500 mb-4">
+          <span className="font-medium text-ice-600">Tip:</span> Scroll down to &ldquo;Talk to your penguin&rdquo; to ask anything — AI or scripted replies appear in the speech bubble above the penguin.
+        </p>
       )}
       <PenguinDashboard
         pet={initialPet}

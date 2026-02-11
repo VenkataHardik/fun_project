@@ -37,6 +37,16 @@ export default async function AppLayout({
             >
               Profile
             </Link>
+            <a
+              href="https://digibouquet.vercel.app/bouquet/ea0d013a-2c83-4346-bd4f-87552ec912d6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-gray-600 hover:text-ice-600 py-2.5 px-3 min-h-[44px] inline-flex items-center gap-1.5"
+              aria-label="Open your bouquet"
+            >
+              <span aria-hidden>🎁</span>
+              Gift
+            </a>
             <LogoutButton />
           </nav>
         </div>
